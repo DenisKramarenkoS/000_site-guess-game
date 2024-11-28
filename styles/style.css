@@ -32,9 +32,8 @@ h1 {
   text-align: center;
 }
 
-h1,
-form {
-  margin-block: 12px;
+h1{
+  margin-top: 12px;
 }
 
 p {
@@ -47,17 +46,20 @@ label[for="guessField"] {
 
 #guessField {
   width: 150px;
+  border-radius: 5px;
+  height: 40px;
   font-family: "Sohne";
   font-weight: bold;
   font-size: 18px;
+  text-align: center;
 }
 
-#guesses {
+.displayedBlock {
   display: none;
 }
 
 #answer {
-  width: 200px;
+  width: 150px;
   height: 40px;
   border: solid 3px green;
   display: none;
@@ -66,9 +68,22 @@ label[for="guessField"] {
   color: black;
 }
 
+#answerAndHint {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 form {
   display: flex;
   gap: 5px;
+  align-items: center;
+  justify-content: center;
 }
 
 button {

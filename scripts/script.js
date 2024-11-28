@@ -8,6 +8,8 @@ const answer = document.getElementById("answer");
 const hint = document.getElementById("hint");
 const guessField = document.getElementById("guessField");
 const formSubmit = document.getElementById("formSubmit");
+const displayedBlock = document.getElementsByClassName("displayedBlock");
+const attemptNumber = document.getElementById("attemptNumber");
 
 let lowValue = 0;
 let highValue = 100;
@@ -17,12 +19,13 @@ let isGameWon = false;
 let isCustomInputActive = false;
 let isControlPressed = false;
 
+let countAttempt = 0;
+
 console.log(randomValue); // Checking in Console
 
 formSubmit.addEventListener("submit", (e) => {
   e.preventDefault();
 });
-
 // Key handler
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -58,7 +61,7 @@ document.addEventListener("keyup", (event) => {
   }
 });
 
-guessField.addEventListener("focus", () => {
+guessField.addEventListener("focus", (e) => {
   isCustomInputActive = true;
 });
 
@@ -72,23 +75,24 @@ sendButton.addEventListener("click", function () {
 
   if (checkClickAnswers) {
     // If SendButton was click show the addict content
-    guesses.style.display = "block";
+    for (let i = 0; i < displayedBlock.length; i += 1) {
+      displayedBlock[i].style.display = "block";
+    }
     answer.style.display = "flex";
     checkClickAnswers = false; // Show once
   }
 
   if (guessValue < 1 || guessValue > 100) {
     // If Guess Value out of range doing this
-    guesses.textContent += " X";
-
-    hint.textContent = `Your answer is out of range, try numbers in the range (${lowValue} - ${highValue})`;
+    hint.textContent = `Is out of range, try in the range (${lowValue} - ${highValue})`;
 
     textAnswer.textContent = "Incorrect Value";
     answer.style.backgroundColor = "yellow";
     answer.style.borderColor = "darkorange";
   } else {
+    countAttempt += 1;
+    attemptNumber.textContent -= 1;
     guesses.textContent += " " + guessValue; // Adding a value in the Previous panel
-
     if (randomValue !== guessValue) {
       textAnswer.textContent = "Wrong";
       answer.style.backgroundColor = "red";
@@ -97,11 +101,18 @@ sendButton.addEventListener("click", function () {
       if (randomValue > guessValue) {
         if (guessValue > lowValue) lowValue = guessValue;
 
-        hint.textContent = `Your answer is too low, try numbers in the range (${lowValue} - ${highValue})`;
+        hint.textContent = `Too low, try numbers in the range (${lowValue} - ${highValue})`;
       } else if (randomValue < guessValue) {
         if (guessValue < highValue) highValue = guessValue;
 
-        hint.textContent = `Your answer is too big, try numbers in the range (${lowValue} - ${highValue})`;
+        hint.textContent = `Too big, try numbers in the range (${lowValue} - ${highValue})`;
+      }
+
+      if (countAttempt >= 7) {
+        hint.textContent = "Your attempts is over. It's was the " + randomValue;
+        guessField.setAttribute("readonly", "true");
+        sendButton.setAttribute("disabled", "true");
+        isGameWon = true;
       }
     } else {
       textAnswer.textContent = "Correct";
@@ -111,9 +122,11 @@ sendButton.addEventListener("click", function () {
       hint.textContent = "Your answer is correct! Congratulations!";
 
       guessField.setAttribute("readonly", "true");
+      sendButton.setAttribute("disabled", "true");
       isGameWon = true;
     }
   }
+  guessField.value = "";
 });
 
 // Play again button
