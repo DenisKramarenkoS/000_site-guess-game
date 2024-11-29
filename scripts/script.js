@@ -10,6 +10,9 @@ const guessField = document.getElementById("guessField");
 const formSubmit = document.getElementById("formSubmit");
 const displayedBlock = document.getElementsByClassName("displayedBlock");
 const attemptNumber = document.getElementById("attemptNumber");
+const switchTheme = document.getElementById("switchTheme");
+const closingBanner = document.getElementById("red");
+const buttonForm = document.getElementsByClassName("button-form")
 
 let lowValue = 0;
 let highValue = 100;
@@ -128,6 +131,39 @@ sendButton.addEventListener("click", function () {
   }
   guessField.value = "";
 });
+
+switchTheme.addEventListener("click", () => {
+  const currentTheme = document.body.className;
+  if (currentTheme === "lightTheme") {
+    document.body.className = "darkTheme";
+
+    // switchTheme
+    switchTheme.style.color = "white";
+    switchTheme.style.backgroundColor = "black";
+
+    // banner, which close info-text
+    closingBanner.style.backgroundColor = "white"
+
+    //buttons
+    for (let i = 0; i < buttonForm.length; i += 1) {
+      buttonForm[i].classList.add("black-form")
+    }
+  } else {
+    document.body.className = "lightTheme"
+    
+    // switchTheme
+    switchTheme.style.color = "black";
+    switchTheme.style.backgroundColor = "white";
+
+    // banner, which close info-text
+    closingBanner.style.backgroundColor = "black"
+
+    //buttons
+    for (let i = 0; i < buttonForm.length; i += 1) {
+      buttonForm[i].classList.remove("black-form")
+    }
+  }
+})
 
 // Play again button
 playAgainButton.addEventListener("click", function () {

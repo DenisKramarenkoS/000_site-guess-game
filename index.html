@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/script.js" defer></script>
   </head>
-  <body>
+  <body class="lightTheme">
+    <button id="switchTheme">
+      switch theme
+    </button>
     <h1 id="header">Number guessing game</h1>
     <div id="red"></div>
     <div id="movingBlock">
@@ -27,16 +30,20 @@
         <button id="sendButton" class="button-form">send</button>
         <button id="playAgainButton" class="button-form">Play Again</button>
       </form>
-      <div id="answerAndHint">
-        <div id="answer">
-          <p id="textAnswer"True</p>
+        <div id="answerAndHint">
+          <div id="answer">
+            <p id="textAnswer"True</p>
+          </div>
+          <div>
+            <p id="hint"></p>
+          </div>
+        </div>
+        <div class="wrap">
+          <p id="guesses" class="displayedBlock">Previous guesses:</p>
         </div>
         <div>
-          <p id="hint"></p>
+          <p class="displayedBlock">Attempt number: <span id="attemptNumber">7</span></p>
         </div>
-      </div>
-      <p id="guesses" class="displayedBlock">Previous guesses:</p>
-      <p class="displayedBlock">Attempt number: <span id="attemptNumber">7</span></p>
     </div>
   </body>
 </html>
