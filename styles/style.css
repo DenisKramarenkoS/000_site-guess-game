@@ -34,12 +34,29 @@ body.darkTheme {
   color: black;
 }
 
-#switchTheme {
+#menu {
+  width: 230px;
   position: absolute;
   top: 5px;
   left: 5px;
-  height: 50px;
-  width: 50px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  width: 200px;
+  height: 28px;
+}
+
+.menuButton {
+  font-family: "Sohne";
+  font-weight: bold;
+  padding-inline: 10px;
+  padding-block: 1px;
+  min-width: 230px;
+  font-size: 1rem;
   background-color: white;
   color: black;
 }
@@ -102,13 +119,10 @@ label[for="guessField"] {
   display: none;
   justify-content: center;
   align-items: center;
+  align-content: center;
+  margin: auto;
+  margin-top: 20px;
   color: black;
-}
-
-#answerAndHint {
-  display: flex;
-  align-items: center;
-  gap: 20px;
 }
 
 #info {
@@ -137,11 +151,10 @@ button.button-form {
   padding-block: 10px;
   padding-inline: 30px;
   border: 2px solid white;
-  background-color: black;
   color: white;
   border-radius: 10px;
   transform-style: preserve-3d;
-  background-color: rgb(17, 18, 73);
+  background-color: black;
   transition: transform 0.15s;
 }
 
@@ -159,16 +172,16 @@ button.button-form::before {
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgb(4, 7, 31);
+  background-color: hsl(0 0% 5%);
   width: 100%;
   height: 100%;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.774);
+  box-shadow: 0 0 0 1px hsl(0 0% 60%);
   transform: translate3d(20px, 0, -1px);
   transition: transform 0.15s;
 }
 
 button.black-form::before {
-  background-color: rgb(231, 231, 231);
+  background-color: hsl(0 0% 93%);
   width: 100%;
   height: 100%;
   box-shadow: 0 0 0 1px black;
@@ -190,4 +203,25 @@ button.button-form:active {
 
 button.button-form:active::before {
   transform: translate3d(0, 0, -1px);
+}
+
+.textDullColor {
+  color: hsl(0 0% 85%);
+}
+
+.centerAlign {
+  text-align: center;
+  font-size: 1rem;
+}
+
+@media (max-width: 1073px) {
+  #menu {
+    position: absolute;
+    top: auto;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: 230px;
+  }
 }

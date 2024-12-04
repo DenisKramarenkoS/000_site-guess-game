@@ -12,7 +12,9 @@ const displayedBlock = document.getElementsByClassName("displayedBlock");
 const attemptNumber = document.getElementById("attemptNumber");
 const switchTheme = document.getElementById("switchTheme");
 const closingBanner = document.getElementById("red");
-const buttonForm = document.getElementsByClassName("button-form")
+const buttonForm = document.getElementsByClassName("button-form");
+const textDullColor = document.getElementsByClassName("textDullColor");
+const menuButton = document.getElementsByClassName("menuButton");
 
 let lowValue = 0;
 let highValue = 100;
@@ -137,33 +139,47 @@ switchTheme.addEventListener("click", () => {
   if (currentTheme === "lightTheme") {
     document.body.className = "darkTheme";
 
-    // switchTheme
-    switchTheme.style.color = "white";
-    switchTheme.style.backgroundColor = "black";
+    // menu buttons
+    for (let i = 0; i < menuButton.length; i += 1) {
+      menuButton[i].style.color = "white"
+      menuButton[i].style.backgroundColor = "black"
+    }
 
     // banner, which close info-text
-    closingBanner.style.backgroundColor = "white"
+    closingBanner.style.backgroundColor = "white";
 
-    //buttons
+    // buttons
     for (let i = 0; i < buttonForm.length; i += 1) {
-      buttonForm[i].classList.add("black-form")
+      buttonForm[i].classList.add("black-form");
+    }
+
+    // Text with dull color
+    for (let i = 0; i < textDullColor.length; i += 1) {
+      textDullColor[i].style.color = "hsl(0 0% 15%)"
     }
   } else {
-    document.body.className = "lightTheme"
-    
-    // switchTheme
-    switchTheme.style.color = "black";
-    switchTheme.style.backgroundColor = "white";
+    document.body.className = "lightTheme";
+
+    // menu buttons
+    for (let i = 0; i < menuButton.length; i += 1) {
+      menuButton[i].style.color = "black";
+      menuButton[i].style.backgroundColor = "white";
+    }
 
     // banner, which close info-text
-    closingBanner.style.backgroundColor = "black"
+    closingBanner.style.backgroundColor = "black";
 
     //buttons
     for (let i = 0; i < buttonForm.length; i += 1) {
-      buttonForm[i].classList.remove("black-form")
+      buttonForm[i].classList.remove("black-form");
+    }
+
+    // Text with dull color
+    for (let i = 0; i < textDullColor.length; i += 1) {
+      textDullColor[i].style.color = "hsl(0 0% 85%)";
     }
   }
-})
+});
 
 // Play again button
 playAgainButton.addEventListener("click", function () {

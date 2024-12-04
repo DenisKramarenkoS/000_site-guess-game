@@ -8,18 +8,34 @@
     <script src="scripts/script.js" defer></script>
   </head>
   <body class="lightTheme">
-    <button id="switchTheme">
-      switch theme
-    </button>
+    <div id="menu">
+      <ul>
+        <li>    
+          <button id="switchTheme" class="menuButton">
+            Theme color
+          </button>
+        </li>
+        <li>
+          <button class="menuButton">
+            Hard mode
+          </button>
+        </li>
+        <li>
+          <button class="menuButton">
+            Insane mode
+          </button>
+        </li>
+      </ul>
+    </div>
+
     <h1 id="header">Number guessing game</h1>
-    <div id="red"></div>
+    <div id="red"> </div>
     <div id="movingBlock">
-      <p id="info">
-        <small>We have selected a number <mark>from 1 to 100</mark>. See if
-        you can guess it <mark>in 7 turns or fewer</mark></small>
+      <p id="info" class="textDullColor">
+        <small>We have selected a number from 1 to 100. See if
+        you can guess it in 7 turns or fewer</small>
       </p>
       <form id="formSubmit">
-        <label for="guessField">Enter a guess: </label>
         <input
           type="number"
           min="1"
@@ -30,16 +46,12 @@
         <button id="sendButton" class="button-form">send</button>
         <button id="playAgainButton" class="button-form">Play Again</button>
       </form>
-        <div id="answerAndHint">
-          <div id="answer">
-            <p id="textAnswer"True</p>
-          </div>
-          <div>
-            <p id="hint"></p>
-          </div>
-        </div>
-        <p id="guesses" class="displayedBlock">Previous guesses:</p>
-        <p class="displayedBlock">Attempt number: <span id="attemptNumber">7</span></p>
+      <p id="hint" class="centerAlign textDullColor"></p>
+      <div id="answer">
+        <p id="textAnswer"True</p>
+      </div>
+      <p id="guesses" class="displayedBlock centerAlign">Previous guesses:</p>
+      <p class="displayedBlock centerAlign">Attempt number: <span id="attemptNumber">7</span></p>
     </div>
   </body>
 </html>
