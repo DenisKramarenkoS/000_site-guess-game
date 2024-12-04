@@ -19,9 +19,12 @@
 }
 
 body {
-  width: 600px;
-  margin-inline: auto;
   font-family: "Sohne";
+}
+
+main {
+  margin-inline: auto;
+  width: 600px
 }
 
 body.lightTheme {
@@ -150,7 +153,7 @@ button.button-form {
   text-transform: uppercase;
   padding-block: 10px;
   padding-inline: 30px;
-  border: 2px solid white;
+  border: 1px solid white;
   color: white;
   border-radius: 10px;
   transform-style: preserve-3d;
@@ -223,5 +226,20 @@ button.button-form:active::before {
     right: 0;
     margin-inline: auto;
     width: 230px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  main {
+    width: 100vw;
+  }
+
+  h1 {
+    font-size: 2rem
+  }
+
+  button.button-form {
+    padding-inline: 10px;
   }
 }

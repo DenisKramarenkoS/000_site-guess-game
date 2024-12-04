@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Number guessing game</title>
     <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/script.js" defer></script>
@@ -27,31 +27,32 @@
         </li>
       </ul>
     </div>
-
-    <h1 id="header">Number guessing game</h1>
-    <div id="red"> </div>
-    <div id="movingBlock">
-      <p id="info" class="textDullColor">
-        <small>We have selected a number from 1 to 100. See if
-        you can guess it in 7 turns or fewer</small>
-      </p>
-      <form id="formSubmit">
-        <input
-          type="number"
-          min="1"
-          max="100"
-          id="guessField"
-          placeholder="from 1 to 100"
-        />
-        <button id="sendButton" class="button-form">send</button>
-        <button id="playAgainButton" class="button-form">Play Again</button>
-      </form>
-      <p id="hint" class="centerAlign textDullColor"></p>
-      <div id="answer">
-        <p id="textAnswer"True</p>
+    <main>
+      <h1 id="header">Number guessing game</h1>
+      <div id="red"> </div>
+      <div id="movingBlock">
+        <p id="info" class="textDullColor">
+          <small>We have selected a number from 1 to 100. See if
+          you can guess it in 7 turns or fewer</small>
+        </p>
+        <form id="formSubmit">
+          <input
+            type="number"
+            min="1"
+            max="100"
+            id="guessField"
+            placeholder="from 1 to 100"
+          />
+          <button id="sendButton" class="button-form">send</button>
+          <button id="playAgainButton" class="button-form">Play Again</button>
+        </form>
+        <p id="hint" class="centerAlign textDullColor"></p>
+        <div id="answer">
+          <p id="textAnswer"True</p>
+        </div>
+        <p id="guesses" class="displayedBlock centerAlign">Previous guesses:</p>
+        <p class="displayedBlock centerAlign">Attempt number: <span id="attemptNumber">7</span></p>
       </div>
-      <p id="guesses" class="displayedBlock centerAlign">Previous guesses:</p>
-      <p class="displayedBlock centerAlign">Attempt number: <span id="attemptNumber">7</span></p>
-    </div>
+    </main>
   </body>
 </html>
