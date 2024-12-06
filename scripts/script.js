@@ -11,7 +11,7 @@ const formSubmit = document.getElementById("formSubmit");
 const displayedBlock = document.getElementsByClassName("displayedBlock");
 const attemptNumber = document.getElementById("attemptNumber");
 const switchTheme = document.getElementById("switchTheme");
-const closingBanner = document.getElementById("red");
+const curtain = document.getElementById("curtain");
 const buttonForm = document.getElementsByClassName("button-form");
 const textDullColor = document.getElementsByClassName("textDullColor");
 const menuButton = document.getElementsByClassName("menuButton");
@@ -77,6 +77,7 @@ guessField.addEventListener("blur", () => {
 // Send button
 sendButton.addEventListener("click", function () {
   const guessValue = Number(guessField.value); // User input
+  const russianVersionCheck = document.body.classList.contains("russianVersion") 
 
   if (checkClickAnswers) {
     // If SendButton was click show the addict content
@@ -89,7 +90,12 @@ sendButton.addEventListener("click", function () {
 
   if (guessValue < 1 || guessValue > 100) {
     // If Guess Value out of range doing this
-    hint.textContent = `Is out of range, try in the range (${lowValue} - ${highValue})`;
+
+    if (russianVersionCheck) {
+      hint.textContent = `Число вне диапазона, попробуйте (${lowValue} - ${highValue})`;
+    } else {
+      hint.textContent = `Is out of range, try in the range (${lowValue} - ${highValue})`;
+    }
 
     textAnswer.textContent = "Incorrect Value";
     answer.style.backgroundColor = "yellow";
@@ -99,7 +105,8 @@ sendButton.addEventListener("click", function () {
     attemptNumber.textContent -= 1;
     guesses.textContent += " " + guessValue; // Adding a value in the Previous panel
     if (randomValue !== guessValue) {
-      textAnswer.textContent = "Wrong";
+      if (russianVersionCheck) textAnswer.textContent = "Неправильно"
+      else textAnswer.textContent = "Wrong";
       answer.style.backgroundColor = "red";
       answer.style.borderColor = "darkred";
 
@@ -135,18 +142,17 @@ sendButton.addEventListener("click", function () {
 });
 
 switchTheme.addEventListener("click", () => {
-  const currentTheme = document.body.className;
-  if (currentTheme === "lightTheme") {
-    document.body.className = "darkTheme";
+  if (document.body.classList.contains("lightTheme")) {
+    document.body.classList.replace("lightTheme", "blackTheme");
 
     // menu buttons
     for (let i = 0; i < menuButton.length; i += 1) {
-      menuButton[i].style.color = "white"
-      menuButton[i].style.backgroundColor = "black"
+      menuButton[i].style.color = "white";
+      menuButton[i].style.backgroundColor = "black";
     }
 
     // banner, which close info-text
-    closingBanner.style.backgroundColor = "white";
+    curtain.style.backgroundColor = "white";
 
     // buttons
     for (let i = 0; i < buttonForm.length; i += 1) {
@@ -155,10 +161,10 @@ switchTheme.addEventListener("click", () => {
 
     // Text with dull color
     for (let i = 0; i < textDullColor.length; i += 1) {
-      textDullColor[i].style.color = "hsl(0 0% 15%)"
+      textDullColor[i].style.color = "hsl(0 0% 15%)";
     }
   } else {
-    document.body.className = "lightTheme";
+    document.body.classList.replace("blackTheme", "lightTheme");
 
     // menu buttons
     for (let i = 0; i < menuButton.length; i += 1) {
@@ -167,7 +173,7 @@ switchTheme.addEventListener("click", () => {
     }
 
     // banner, which close info-text
-    closingBanner.style.backgroundColor = "black";
+    curtain.style.backgroundColor = "black";
 
     //buttons
     for (let i = 0; i < buttonForm.length; i += 1) {

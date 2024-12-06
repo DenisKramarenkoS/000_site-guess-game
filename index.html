@@ -4,32 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Number guessing game</title>
+    <meta name="author" content="Denis Kramarenko">
+    <meta name="description" content="A site made from the heart.">
+
     <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/script.js" defer></script>
   </head>
   <body class="lightTheme">
-    <div id="menu">
-      <ul>
-        <li>    
-          <button id="switchTheme" class="menuButton">
-            Theme color
-          </button>
-        </li>
-        <li>
-          <button class="menuButton">
-            Hard mode
-          </button>
-        </li>
-        <li>
-          <button class="menuButton">
-            Insane mode
-          </button>
-        </li>
-      </ul>
-    </div>
+    <nav>
+        <ul>
+          <li>
+            <button id="switchTheme" class="menuButton">
+              Theme color
+            </button>
+          </li>
+          <li>
+            <a href="guessing-game-ru.html">
+              <button class="menuButton">
+                Russian version
+              </button>
+            </a>
+          </li>
+          <li>
+            <button class="menuButton">
+              Hard mode
+            </button>
+          </li>
+          <li>
+            <button class="menuButton">
+              Insane mode
+            </button>
+          </li>
+        </ul>
+    </nav>
     <main>
-      <h1 id="header">Number guessing game</h1>
-      <div id="red"> </div>
+      <header>
+        <h1 id="header">Number guessing game</h1>
+      </header>
+      <div id="curtain"></div>
       <div id="movingBlock">
         <p id="info" class="textDullColor">
           <small>We have selected a number from 1 to 100. See if

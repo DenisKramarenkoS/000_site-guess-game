@@ -12,6 +12,11 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url(../assets/fonts/montserrat.ttf) format("truetype");
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -22,9 +27,61 @@ body {
   font-family: "Sohne";
 }
 
+.russianVersion {
+  font-family: "Montserrat" !important;
+}
+
+ul {
+  list-style: none;
+  justify-items: center;
+}
+
+ul li {
+  width: 230px;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  width: fit-content;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
 main {
   margin-inline: auto;
-  width: 600px
+  width: 600px;
+}
+
+header {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-top: 12px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+p {
+  font-size: 19px;
+}
+
+form {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+  border: none;
 }
 
 body.lightTheme {
@@ -37,51 +94,33 @@ body.darkTheme {
   color: black;
 }
 
-#menu {
-  width: 230px;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-}
-
-ul {
-  list-style: none;
-}
-
-li {
-  width: 200px;
-  height: 28px;
-}
-
-.menuButton {
+button.menuButton {
   font-family: "Sohne";
   font-weight: bold;
   padding-inline: 10px;
   padding-block: 1px;
+  height: 30px;
   min-width: 230px;
   font-size: 1rem;
   background-color: white;
   color: black;
+  transition: min-width 0.2s, height 0.2s, font-size 0.2s;
 }
 
-h1 {
-  position: relative;
-  z-index: 3;
-  font-size: 50px;
-  text-align: center;
-  margin-top: 12px;
+button.menuButton:hover {
+  min-width: 220px;
+  height: 28px;
+  font-size: 15px;
 }
 
-#header:hover ~ #movingBlock {
+button.menuButton:active {
+  min-width: 200px;
+  height: 26px;
+  font-size: 13px;
+}
+
+header:hover ~ #movingBlock {
   transform: translateY(0px);
-}
-
-p {
-  font-size: 19px;
-}
-
-label[for="guessField"] {
-  font-size: 18px;
 }
 
 #movingBlock {
@@ -91,7 +130,7 @@ label[for="guessField"] {
   z-index: 1;
 }
 
-#red {
+#curtain {
   position: absolute;
   width: inherit;
   height: 74px;
@@ -131,19 +170,6 @@ label[for="guessField"] {
 #info {
   text-align: center;
   margin-bottom: 30px;
-}
-
-form {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  justify-content: center;
-}
-
-button {
-  outline: none;
-  cursor: pointer;
-  border: none;
 }
 
 button.button-form {
@@ -218,7 +244,7 @@ button.button-form:active::before {
 }
 
 @media (max-width: 1073px) {
-  #menu {
+  nav {
     position: absolute;
     top: auto;
     bottom: 5px;
@@ -227,19 +253,62 @@ button.button-form:active::before {
     margin-inline: auto;
     width: 230px;
   }
+  button.menuButton {
+    font-family: "Sohne";
+    font-weight: bold;
+    padding-inline: 10px;
+    padding-block: 1px;
+    height: 30px;
+    min-width: 80vw;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    transition: min-width 0.2s, height 0.2s, font-size 0.2s;
+  }
+
+  button.menuButton:hover {
+    min-width: 70vw;
+    height: 28px;
+    font-size: 15px;
+  }
+
+  button.menuButton:active {
+    min-width: 60vw;
+    height: 26px;
+    font-size: 13px;
+  }
+
+  ul li {
+    width: 80vw;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-@media (max-width: 400px) {
-
+@media (max-width: 600px) {
   main {
     width: 100vw;
   }
 
   h1 {
-    font-size: 2rem
+    font-size: 2rem;
   }
 
   button.button-form {
-    padding-inline: 10px;
+    padding-inline: 8px;
+  }
+
+  #curtain {
+    height: 53px;
+  }
+
+  #info {
+    margin-bottom: 10px;
+  }
+
+  #movingBlock {
+    transform: translateY(-50px);
   }
 }
