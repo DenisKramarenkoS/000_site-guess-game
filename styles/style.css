@@ -17,6 +17,7 @@
   src: url(../assets/fonts/montserrat.ttf) format("truetype");
 }
 
+
 * {
   margin: 0px;
   padding: 0px;
@@ -54,6 +55,7 @@ nav {
 
 main {
   margin-inline: auto;
+  height: 100vh;
   width: 600px;
 }
 
@@ -85,12 +87,12 @@ button {
   border: none;
 }
 
-body.lightTheme {
+body.blackTheme {
   background-color: black;
   color: white;
 }
 
-body.darkTheme {
+body.whiteTheme {
   background-color: white;
   color: black;
 }
@@ -120,13 +122,25 @@ button.menuButton:active {
   font-size: 13px;
 }
 
+#hardModeButton {
+  border: 3px solid hsl(25 100% 50%);
+  background-color: black;
+  color: hsl(25 100% 50%);
+}
+
+#insaneModeButton {
+  border: 3px solid red;
+  background-color: black;
+  color: red;
+}
+
 header:hover ~ #movingBlock {
   transform: translateY(0px);
 }
 
 #movingBlock {
   position: relative;
-  transform: translateY(-40px);
+  transform: translateY(-58px);
   transition: transform 0.2s;
   z-index: 1;
 }
@@ -169,8 +183,54 @@ header:hover ~ #movingBlock {
 }
 
 #info {
+  font-size: 18px;
   text-align: center;
   margin-bottom: 30px;
+}
+
+#numbersBlock {
+  min-width: 80vw;
+  width: 80vw;
+  position: absolute;
+  bottom: 22vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  margin-inline: auto;
+}
+
+.numberButton {
+  background-color: white;
+  border-radius: 3px;
+  font-family: "Sohne";
+  font-size: 1.3rem;
+  margin: auto;
+  width: 100%;
+  height: 65px;
+  transition: width 0.1s, height 0.1s, background-color 0.15s;
+}
+
+.numberButton:active {
+  width: 90%;
+  height: 62px;
+  background-color: hsl(0 0% 80%);
+}
+
+.dullWhiteTheme {
+  color: white;
+  background-color: hsl(0 0% 10%);
+}
+
+.numberButton.dullWhiteTheme:active {
+  background-color: hsl(0 0% 5%);
+}
+
+#zeroNumberButton {
+  grid-column: 2;
+  grid-row: 4;
 }
 
 button.button-form {
@@ -311,5 +371,61 @@ button.button-form:active::before {
 
   #movingBlock {
     transform: translateY(-50px);
+  }
+
+  #numbersBlock {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    margin-inline: auto;
+    width: fit-content;
+  }
+
+  button.menuButton:hover {
+    min-width: 80vw;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  button.menuButton:active {
+    min-width: 60vw;
+    height: 26px;
+    font-size: 13px;
+  }
+
+  button.button-form:hover {
+    transform: translateX(0px);
+  }
+
+  button.button-form:hover::before {
+    transform: translate3d(20px, 0, -1px);
+  }
+
+  button.button-form:active {
+    transform: translateX(20px);
+  }
+
+  button.button-form:active::before {
+    transform: translate3d(0, 0, -1px);
+  }
+
+  @media (max-height: 720px) {
+    #numbersBlock {
+      top: unset;
+      bottom: 25vh;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    .numberButton {
+      height: 40px;
+      width: 100%;
+    }
+
+    .numberButton:active {
+      height: 38px;
+      width: 90%;
+    }
   }
 }

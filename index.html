@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/script.js" defer></script>
   </head>
-  <body class="lightTheme">
+  <body class="blackTheme">
     <nav>
         <ul>
           <li>
@@ -26,12 +26,12 @@
             </a>
           </li>
           <li>
-            <button class="menuButton">
+            <button class="menuButton modeButton" id="hardModeButton">
               Hard mode
             </button>
           </li>
           <li>
-            <button class="menuButton">
+            <button class="menuButton modeButton" id="insaneModeButton">
               Insane mode
             </button>
           </li>
@@ -44,8 +44,8 @@
       <div id="curtain"></div>
       <div id="movingBlock">
         <p id="info" class="textDullColor">
-          <small>We have selected a number from 1 to 100. See if
-          you can guess it in 7 turns or fewer</small>
+          We have selected a number from 1 to 100. See if
+          you can guess it in 7 turns or fewer
         </p>
         <form id="formSubmit">
           <input
@@ -64,6 +64,20 @@
         </div>
         <p id="guesses" class="displayedBlock centerAlign">Previous guesses:</p>
         <p class="displayedBlock centerAlign">Attempt number: <span id="attemptNumber">7</span></p>
+      </div>
+      <div id="numbersBlock">
+        <button class="numberButton">1</button>
+        <button class="numberButton">2</button>
+        <button class="numberButton">3</button>
+        <button class="numberButton">4</button>
+        <button class="numberButton">5</button>
+        <button class="numberButton">6</button>
+        <button class="numberButton">7</button>
+        <button class="numberButton">8</button>
+        <button class="numberButton">9</button>
+        <button id="zeroNumberButton" class="numberButton">0</button>
+        <button id="clearAllNumbers" class="numberButton">C</button>
+        <button id="clearOneNumber" class="numberButton"><</button>
       </div>
     </main>
   </body>
