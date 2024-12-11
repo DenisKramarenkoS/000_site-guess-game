@@ -1,4 +1,31 @@
-let randomValue;
+"use strict";
+
+function gameMode(isGameModeEnable, anotherGameMode, mode) {
+  isGameModeEnable = true;
+  anotherGameMode = false;
+  const russianVersionCheck =
+    document.body.classList.contains("russianVersion");
+
+  if (russianVersionCheck) {
+    if (mode === "hard") {
+      info.textContent =
+        "Мы загадали число от 1 до 1000. Сможешь отгадать его за 10 попыток?";
+    } else if (mode === "insane") {
+      info.textContent =
+        "Мы загадали число от 1 до 4 миллиардов. Сможешь отгадать его за 32 попытки?";
+    }
+  } else {
+    if (mode === "hard") {
+      info.textContent =
+        "We have selected a number from 1 to 1000. See if you can guess it in 10 turns or fewer";
+    } else if (mode === "insane") {
+      info.textContent =
+        "We have selected a number from 1 to 4 billion. See if you can guess it in 32 turns or fewer";
+    }
+  }
+}
+
+// HTML elements
 const sendButton = document.getElementById("sendButton");
 const playAgainButton = document.getElementById("playAgainButton");
 const guesses = document.getElementById("guesses");
@@ -20,21 +47,12 @@ const info = document.getElementById("info");
 const numbersBlock = document.getElementById("numbersBlock");
 const numberButton = document.getElementsByClassName("numberButton");
 
-let maxValue;
-
-let lowValue;
-let highValue;
-
-let checkClickAnswers = true;
 let isGameWon = false;
 let isCustomInputActive = false;
 let isControlPressed = false;
-let isValueCreated = false;
+
 let isHardModeEnable = false;
 let isInsaneModeEnable = false;
-
-let countAttempt = 0;
-let maxCountAttempts;
 
 formSubmit.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -45,7 +63,7 @@ document.addEventListener("keydown", (event) => {
     event.preventDefault(); // Delete default action on "Enter" key
     if (!isGameWon)
       sendButton.click(); // If game isn't end, activate the sendButton
-    else playAgainButton.click(); // If game end,  activate the playAgainButton
+    else playAgainButton.click(); // If game end, activate the playAgainButton
   }
 
   if (event.code === "ControlLeft" || event.code === "ControlRight") {
@@ -84,6 +102,15 @@ guessField.addEventListener("blur", () => {
 
 // Send button
 sendButton.addEventListener("click", function () {
+  let randomValue;
+  let maxValue;
+  let lowValue;
+  let highValue;
+  let isValueCreated = false;
+  let checkClickAnswers = true;
+  let countAttempt = 0;
+  let maxCountAttempts;
+
   if (!isValueCreated) {
     if (isHardModeEnable) {
       maxValue = 1000;
@@ -226,7 +253,7 @@ switchTheme.addEventListener("click", () => {
 
     // numbers buttons
     for (let i = 0; i < numberButton.length; i++) {
-      numberButton[i].classList.add("dullWhiteTheme");
+      numberButton[i].classList.add("dullBlackTheme");
     }
   } else {
     document.body.classList.replace("whiteTheme", "blackTheme");
@@ -260,43 +287,22 @@ switchTheme.addEventListener("click", () => {
 
     // Text with dull color
     for (let i = 0; i < textDullColor.length; i++) {
-      textDullColor[i].style.color = "hsl(0 0% 85%)";
+      textDullColor[i].style.color = "var(--dullWhite-color)";
     }
 
     // numbers buttons
     for (let i = 0; i < numberButton.length; i++) {
-      numberButton[i].classList.remove("dullWhiteTheme");
+      numberButton[i].classList.remove("dullBlackTheme");
     }
   }
 });
 
-hardModeButton.addEventListener("click", function () {
-  isHardModeEnable = true;
-  const russianVersionCheck =
-    document.body.classList.contains("russianVersion");
-
-  if (russianVersionCheck) {
-    info.textContent =
-      "Мы загадали число от 1 до 1000. Сможешь отгадать его за 10 попыток?";
-  } else {
-    info.textContent =
-      "We have selected a number from 1 to 1000. See if you can guess it in 10 turns or fewer";
-  }
-});
-
-insaneModeButton.addEventListener("click", function () {
-  isInsaneModeEnable = true;
-  const russianVersionCheck =
-    document.body.classList.contains("russianVersion");
-
-  if (russianVersionCheck) {
-    info.textContent =
-      "Мы загадали число от 1 до 4 миллиардов. Сможешь отгадать его за 32 попытки?";
-  } else {
-    info.textContent =
-      "We have selected a number from 1 to 4 billion. See if you can guess it in 32 turns or fewer";
-  }
-});
+hardModeButton.addEventListener("click", () =>
+  gameMode(isHardModeEnable, isInsaneModeEnable, "hard")
+);
+insaneModeButton.addEventListener("click", () =>
+  gameMode(isInsaneModeEnable, isHardModeEnable, "insane")
+);
 
 numbersBlock.addEventListener("click", function (event) {
   const target = event.target;

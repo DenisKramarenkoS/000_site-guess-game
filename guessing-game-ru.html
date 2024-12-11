@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Угадай число</title>
     <meta name="author" content="Denis Kramarenko">
-    <meta name="description" content="A site made from the heart.">
+    <meta name="description" content="Сайт от души для души">
 
     <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/script.js" defer></script>
@@ -20,11 +20,9 @@
             </button>
           </li>
           <li>
-            <a href="index.html">
-              <button class="menuButton russianVersion">
-                Английская версия
-              </button>
-            </a>
+            <button class="menuButton russianVersion" onclick="location.href='index.html'">
+              Английская версия
+            </button>
           </li>
           <li>
             <button class="menuButton russianVersion modeButton" id="hardModeButton">
@@ -38,35 +36,44 @@
           </li>
         </ul>
     </nav>
+    
     <main>
       <header>
         <h1 id="header">Угадай число</h1>
       </header>
+
       <div id="curtain"></div>
-      <div id="movingBlock">
-        <p id="info" class="textDullColor">
-          Мы загадали число от 1 до 100. Сможешь отгадать его за 7 попыток?
-        </p>
-        <form id="formSubmit">
-          <input
-            type="number"
-            min="1"
-            max="100"
-            id="guessField"
-            placeholder="От 1 до 100"
-            class="russianVersion"
-          />
-          <button id="sendButton" class="button-form russianVersion">Отправить</button>
-          <button id="playAgainButton" class="button-form russianVersion">Снова</button>
-        </form>
-        <p id="hint" class="centerAlign textDullColor"></p>
-        <div id="answer">
-          <p id="textAnswer"True</p>
-        </div>
-        <p id="guesses" class="displayedBlock centerAlign">Прошлые попытки: </p>
-        <p class="displayedBlock centerAlign">Номер попытки: <span id="attemptNumber">7</span></p>
-      </div>
-      <div id="numbersBlock">
+
+      <section id="movingBlock">
+        <section>
+          <p id="info" class="textDullColor">
+            Мы загадали число от 1 до 100. Сможешь отгадать его за 7 попыток?
+          </p>
+        </section>
+
+        <section>
+          <form id="formSubmit">
+            <input
+              type="number"
+              min="1"
+              max="100"
+              id="guessField"
+              placeholder="От 1 до 100"
+              class="russianVersion"
+            />
+            <button id="sendButton" class="button-form russianVersion">Отправить</button>
+            <button id="playAgainButton" class="button-form russianVersion">Снова</button>
+          </form>
+          <p id="hint" class="centerAlign textDullColor"></p>
+          <div id="answer">
+            <p id="textAnswer"True</p>
+          </div>
+          <p id="guesses" class="displayedBlock centerAlign">Прошлые попытки: </p>
+          <p class="displayedBlock centerAlign">Номер попытки: <span id="attemptNumber">7</span></p>
+        </section>
+      </section>
+
+      <section id="numbersBlock">
         <button class="numberButton">1</button>
         <button class="numberButton">2</button>
         <button class="numberButton">3</button>
@@ -79,7 +86,7 @@
         <button id="zeroNumberButton" class="numberButton">0</button>
         <button id="clearAllNumbers" class="numberButton">C</button>
         <button id="clearOneNumber" class="numberButton"><</button>
-      </div>
+      </section>
     </main>
   </body>
 </html>

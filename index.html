@@ -4,68 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Number guessing game</title>
-    <meta name="author" content="Denis Kramarenko">
-    <meta name="description" content="A site made from the heart.">
+    <meta name="author" content="Denis Kramarenko" />
+    <meta name="description" content="A site made from the heart." />
 
     <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/script.js" defer></script>
   </head>
   <body class="blackTheme">
     <nav>
-        <ul>
-          <li>
-            <button id="switchTheme" class="menuButton">
-              Theme color
-            </button>
-          </li>
-          <li>
-            <a href="guessing-game-ru.html">
-              <button class="menuButton">
-                Russian version
-              </button>
-            </a>
-          </li>
-          <li>
-            <button class="menuButton modeButton" id="hardModeButton">
-              Hard mode
-            </button>
-          </li>
-          <li>
-            <button class="menuButton modeButton" id="insaneModeButton">
-              Insane mode
-            </button>
-          </li>
-        </ul>
+      <ul>
+        <li>
+          <button id="switchTheme" class="menuButton">Theme color</button>
+        </li>
+        <li>
+          <button
+            class="menuButton"
+            onclick="location.href='guessing-game-ru.html'"
+          >
+            Russian version
+          </button>
+        </li>
+        <li>
+          <button class="menuButton modeButton" id="hardModeButton">
+            Hard mode
+          </button>
+        </li>
+        <li>
+          <button class="menuButton modeButton" id="insaneModeButton">
+            Insane mode
+          </button>
+        </li>
+      </ul>
     </nav>
+
     <main>
       <header>
         <h1 id="header">Number guessing game</h1>
       </header>
+
       <div id="curtain"></div>
-      <div id="movingBlock">
-        <p id="info" class="textDullColor">
-          We have selected a number from 1 to 100. See if
-          you can guess it in 7 turns or fewer
-        </p>
-        <form id="formSubmit">
-          <input
-            type="number"
-            min="1"
-            max="100"
-            id="guessField"
-            placeholder="from 1 to 100"
-          />
-          <button id="sendButton" class="button-form">send</button>
-          <button id="playAgainButton" class="button-form">Play Again</button>
-        </form>
-        <p id="hint" class="centerAlign textDullColor"></p>
-        <div id="answer">
-          <p id="textAnswer"True</p>
-        </div>
-        <p id="guesses" class="displayedBlock centerAlign">Previous guesses:</p>
-        <p class="displayedBlock centerAlign">Attempt number: <span id="attemptNumber">7</span></p>
-      </div>
-      <div id="numbersBlock">
+
+      <section id="movingBlock">
+        <section>
+          <p id="info" class="textDullColor">
+            We have selected a number from 1 to 100. See if you can guess it in
+            7 turns or fewer
+          </p>
+        </section>
+
+        <section>
+          <form id="formSubmit">
+            <input
+              type="number"
+              min="1"
+              max="100"
+              id="guessField"
+              placeholder="from 1 to 100"
+            />
+            <button
+              aria-label="send your answer"
+              id="sendButton"
+              class="button-form"
+            >
+              send
+            </button>
+            <button id="playAgainButton" class="button-form">Play Again</button>
+          </form>
+          <p id="hint" class="centerAlign textDullColor"></p>
+          <div id="answer">
+            <p id="textAnswer"></p>
+          </div>
+          <p id="guesses" class="displayedBlock centerAlign">
+            Previous guesses:
+          </p>
+          <p class="displayedBlock centerAlign">
+            Attempt number: <span id="attemptNumber">7</span>
+          </p>
+        </section>
+      </section>
+
+      <section id="numbersBlock">
         <button class="numberButton">1</button>
         <button class="numberButton">2</button>
         <button class="numberButton">3</button>
@@ -78,7 +96,7 @@
         <button id="zeroNumberButton" class="numberButton">0</button>
         <button id="clearAllNumbers" class="numberButton">C</button>
         <button id="clearOneNumber" class="numberButton"><</button>
-      </div>
+      </section>
     </main>
   </body>
 </html>
