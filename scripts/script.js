@@ -1,30 +1,5 @@
 "use strict";
 
-function gameMode(isGameModeEnable, anotherGameMode, mode) {
-  isGameModeEnable = true;
-  anotherGameMode = false;
-  const russianVersionCheck =
-    document.body.classList.contains("russianVersion");
-
-  if (russianVersionCheck) { //s
-    if (mode === "hard") {
-      info.textContent =
-        "Мы загадали число от 1 до 1000. Сможешь отгадать его за 10 попыток?";
-    } else if (mode === "insane") {
-      info.textContent =
-        "Мы загадали число от 1 до 4 миллиардов. Сможешь отгадать его за 32 попытки?";
-    }
-  } else {
-    if (mode === "hard") {
-      info.textContent =
-        "We have selected a number from 1 to 1000. See if you can guess it in 10 turns or fewer";
-    } else if (mode === "insane") {
-      info.textContent =
-        "We have selected a number from 1 to 4 billion. See if you can guess it in 32 turns or fewer";
-    }
-  }
-}
-
 // HTML elements
 const sendButton = document.getElementById("sendButton");
 const playAgainButton = document.getElementById("playAgainButton");
@@ -46,6 +21,15 @@ const insaneModeButton = document.getElementById("insaneModeButton");
 const info = document.getElementById("info");
 const numbersBlock = document.getElementById("numbersBlock");
 const numberButton = document.getElementsByClassName("numberButton");
+
+let countAttempt = 0;
+let randomValue;
+let maxValue;
+let lowValue;
+let highValue;
+let isValueCreated = false;
+let checkClickAnswers = true;
+let maxCountAttempts;
 
 let isGameWon = false;
 let isCustomInputActive = false;
@@ -102,15 +86,7 @@ guessField.addEventListener("blur", () => {
 
 // Send button
 sendButton.addEventListener("click", function () {
-  let randomValue;
-  let maxValue;
-  let lowValue;
-  let highValue;
-  let isValueCreated = false;
-  let checkClickAnswers = true;
-  let countAttempt = 0;
-  let maxCountAttempts;
-
+  console.log(isHardModeEnable);
   if (!isValueCreated) {
     if (isHardModeEnable) {
       maxValue = 1000;
@@ -124,11 +100,9 @@ sendButton.addEventListener("click", function () {
     }
     randomValue = Math.floor(Math.random() * maxValue);
 
-    console.log(randomValue);
-
-    isValueCreated = true;
     lowValue = 1;
     highValue = maxValue;
+    isValueCreated = true;
   }
 
   const guessValue = Number(guessField.value); // User input
@@ -158,8 +132,9 @@ sendButton.addEventListener("click", function () {
     answer.style.color = "hsl(25 100% 50%)";
     answer.style.borderColor = "hsl(25 100% 50%)";
   } else {
-    countAttempt++;
+    countAttempt += 1;
     attemptNumber.textContent = maxCountAttempts - countAttempt;
+    console.log(maxCountAttempts - countAttempt);
     guesses.textContent += " " + guessValue; // Adding a value in the Previous panel
     if (randomValue !== guessValue) {
       if (russianVersionCheck) textAnswer.textContent = "Неправильно";
@@ -297,12 +272,33 @@ switchTheme.addEventListener("click", () => {
   }
 });
 
-hardModeButton.addEventListener("click", () =>
-  gameMode(isHardModeEnable, isInsaneModeEnable, "hard")
-);
-insaneModeButton.addEventListener("click", () =>
-  gameMode(isInsaneModeEnable, isHardModeEnable, "insane")
-);
+hardModeButton.addEventListener("click", function () {
+  isHardModeEnable = true;
+  const russianVersionCheck =
+    document.body.classList.contains("russianVersion");
+
+  if (russianVersionCheck) {
+    info.textContent =
+      "Мы загадали число от 1 до 1000. Сможешь отгадать его за 10 попыток?";
+  } else {
+    info.textContent =
+      "We have selected a number from 1 to 1000. See if you can guess it in 10 turns or fewer";
+  }
+});
+
+insaneModeButton.addEventListener("click", function () {
+  isInsaneModeEnable = true;
+  const russianVersionCheck =
+    document.body.classList.contains("russianVersion");
+  
+  if (russianVersionCheck) {
+    info.textContent =
+      "Мы загадали число от 1 до 4 миллиардов. Сможешь отгадать его за 32 попытки?";
+  } else {
+    info.textContent =
+      "We have selected a number from 1 to 4 billion. See if you can guess it in 32 turns or fewer";
+  }
+});
 
 numbersBlock.addEventListener("click", function (event) {
   const target = event.target;
