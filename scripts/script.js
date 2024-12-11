@@ -6,7 +6,7 @@ function gameMode(isGameModeEnable, anotherGameMode, mode) {
   const russianVersionCheck =
     document.body.classList.contains("russianVersion");
 
-  if (russianVersionCheck) {
+  if (russianVersionCheck) { //s
     if (mode === "hard") {
       info.textContent =
         "Мы загадали число от 1 до 1000. Сможешь отгадать его за 10 попыток?";
