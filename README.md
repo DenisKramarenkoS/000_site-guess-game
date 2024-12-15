@@ -12,8 +12,7 @@ A simple number guessing game built with HTML, CSS and JavaScript.
 ## Screenshots
 ![Game Interface on PC's](screenshots/example-picture-pc.png)
 ## Installation
-1. Clone the repository:
-  git clone https://github.com/TO-31/site-guess-game
+1. Clone the repository:<br>git clone https://github.com/TO-31/site-guess-game
 2. Open index.html in your browser
 ## Demo
 [Live Demo](https://TO-31.github.io/site-guess-game)
